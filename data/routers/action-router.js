@@ -25,4 +25,24 @@ router.post('/', async (req, res) => {
         res.status(500).json({message: 'failed to add new action'})
     }
 });
+
+router.put('/:id', async (req, res) => {
+    try {
+        if (!req.body.project_id || !req.body.description || !req.body.notes) {
+            return res.status(400).json({message: "Please provide a project_id, notes, and description."})
+        }
+        const action = await ActionFuncs.update(req.params.id, req.body)
+        if(action) {
+            res.status(200).json({action})
+        } else {
+            res.status(404).json({message: 'this action could not be found'})
+        }
+    } 
+    catch(err) {
+        console.log(err)
+        res.status(500).json({
+            message: 'Error updating the action'
+        })
+    }
+});
 module.exports = router;
