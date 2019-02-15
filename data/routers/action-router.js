@@ -18,6 +18,9 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
     const newAction = await ActionFuncs.insert(req.body)
     try {
+        if (!req.body.project_id || !req.body.description || !req.body.notes) {
+            return res.status(400).json({message: "Please provide a project_id, notes, and description."})
+        }
         res.status(201).json({newAction})
     }
     catch(err) {
