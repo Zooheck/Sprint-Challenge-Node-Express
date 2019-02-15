@@ -25,15 +25,15 @@ In this challenge, create a web API around the following resources: `Projects` a
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Mention two parts of Express that you learned about this week.
-
+Epress makes it easy and untuitive to create web APIs. It also makes it easy to serve dynamic routes.
 - [ ] Describe Middleware?
-
+Custom functions which can add functionality to asyncronous actions.
 - [ ] Describe a Resource?
-
+The "nouns" of APIs (posts, users, comments, etc)
 - [ ] What can the API return to help clients know if a request was successful?
-
+http status 200
 - [ ] How can we partition our application into sub-applications?
-
+We can separate the concerns of the various routes into separate files, then import them into the main server.js file
 ## Project Setup
 
 Follow these steps to set up and work on your project:
