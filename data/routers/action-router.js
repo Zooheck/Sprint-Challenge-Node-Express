@@ -10,7 +10,19 @@ router.get('/:id', async (req, res) => {
     }
     catch (err) {
         console.log(err)
+
     }
 
+});
+
+router.post('/', async (req, res) => {
+    const newAction = await ActionFuncs.insert(req.body)
+    try {
+        res.status(201).json({newAction})
+    }
+    catch(err) {
+        console.log(err)
+        res.status(500).json({message: 'failed to add new action'})
+    }
 });
 module.exports = router;
