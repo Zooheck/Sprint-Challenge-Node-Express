@@ -25,4 +25,21 @@ router.post('/', async (req, res) => {
         res.status(500).json({message: "failed to add new project"})
     }
 })
+router.put('/:id', async (req, res) => {
+    if (!req.body.description || !req.body.name) {
+        return res.status(400).json({message: "Please provide a name and description."})
+    }
+    try {
+        const project = await ProjectFuncs.update(req.params.id, req.body)
+        if(project) {
+            res.status(200).json({project})
+        } else {
+            res.status(404).json({message: "this project could not be found"})
+        }
+    }
+    catch(err) {
+        console.log(err)
+        res.status(500).json({message: "error editing project"})
+    }
+});
 module.exports = router;
